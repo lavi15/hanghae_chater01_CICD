@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    default: prod
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+management:
+  endpoint:
+    health:
+      enabled: true
+    beans:
+      enabled: true
+    info:
+      enabled: true
+    conditions:
+      enabled: true
+    metrics:
+      enabled: true
+
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude:
+          - loggers
+          - quartz
+          - caches
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+
